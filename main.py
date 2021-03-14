@@ -46,6 +46,7 @@ def runner():
 
 
 root = Tk()
+root.title("Batch AutoCropper")
 
 # // Select input folder path
 input_pdf_path = StringVar()
