@@ -1,4 +1,4 @@
-# Batch Photo-scan Autocropper
+# Batch Scan Autocropper
 
 This is a Python application with a Tkinter GUI that takes in a multi-page PDF of individual scans with 3-4 individual photos on each page (separated by scanner bed whitespace), and uses [OpenCV](https://pypi.org/project/opencv-python/) to detect and export the individual photos in the entire PDF.
 
@@ -6,7 +6,11 @@ I created this because the automatic cropping in Apple's [ImageCapture](https://
 
 Using this application paired with Epson's PDFNavi, the same result (3 individual photos) can be achieved in less than 15 seconds. This makes the monotonous task of scanning hundreds or thousands of old photos significantly faster, easier, and for better or worse, more monotonous.
 
-![](gui.png)
+![](readme/gui.png)
+
+Input PDF of scans            |  Output cropped images
+:-------------------------:|:-------------------------:
+![](readme/multipagepdf.png) | ![](readme/output2.png)
 
 
 ## Table of contents
@@ -19,26 +23,26 @@ Using this application paired with Epson's PDFNavi, the same result (3 individua
 
 1. Using Epson's SmartScan Suite that comes with Epson scanners, open the PDFNavi application:
 
-![](PDFnavi.png)
+    ![](readme/PDFnavi.png)
 
 2. Place 3-4 photos with a little whitespace between each on scanner bed, and click the green scan button. Replace photos and repeat as needed (recommend up to 15 scans to reduce load).
 
 3. Click the "Finish" button, and you will have a multi page PDF with each scan:
 
-![](multipagepdf.png)
+    ![](readme/multipagepdf.png)
 
 4. Open Terminal and cd into project directory and run:
 
-```
-make run
-```
-Select the PDF and the export location, and click Autocrop.
+    ```
+    make run
+    ```
+5. Select the PDF and the export location, and click Autocrop.
 
-![](gui.png)
+    ![](readme/gui.png)
 
 5. Output:
 
-![](fileoutput.png)
+    ![](readme/fileoutput.png)
 
 # Overview 
 
