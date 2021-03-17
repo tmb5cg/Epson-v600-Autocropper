@@ -7,7 +7,7 @@ import imutils
 
 import random as r
 
-
+# Autocrops individual page using openCV
 def doWork(filename, outputfolder):
     image1 = cv2.imread(filename)
     h, w = image1.shape[0:2]
