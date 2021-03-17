@@ -16,7 +16,11 @@ For use with Epson v600, or any Epson scanners compatible with Epson SmartScan S
 
 ![](multipagepdf.png)
 
-4. Open this app, select the PDF and the export location, and click Autocrop! Output:
+4. Open this app, select the PDF and the export location, and click Autocrop! 
+
+![](gui.png)
+
+5. Output:
 
 ![](fileoutput.png)
 
