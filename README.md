@@ -1,10 +1,21 @@
-# Epson-v600-Autocropper
+# Batch Photo-scan Autocropper
 
-Takes in multi-page PDF of 8x12in scans with (up to) 4 individual photos on each page (separated by scanner bed whitespace), outputs all images cropped. Allows one to efficiently scan hundreds/thousands of family photos fast and efficiently, without manually cropping, or using Epson/Apple ImageCapture autocropping which requires a preview scan and tedious extra steps that add significant time.
+This is a Python application with a Tkinter GUI that takes in a multi-page PDF of individual scans with 3-4 individual photos on each page (separated by scanner bed whitespace), and uses [OpenCV](https://pypi.org/project/opencv-python/) to detect and export the individual photos in the entire PDF.
 
-For use with Epson v600, or any Epson scanners compatible with Epson SmartScan Suite.
+I created this because the automatic cropping in Apple's [ImageCapture](https://support.apple.com/guide/image-capture/scan-images-imgcp1004/mac) and [Epson's ScanSmart](https://epson.com/Support/wa00870) software requires a preview scan (~8 seconds), approval of the detected edges (~5 seconds let's say), followed by 3 separate scans for each individual photo (~120 seconds for just 3 photos!).
 
-# How to use
+Using this application paired with Epson's PDFNavi, the same result (3 individual photos) can be achieved in less than 15 seconds. This makes the monotonous task of scanning hundreds or thousands of old photos significantly faster, easier, and for better or worse, more monotonous.
+
+![](gui.png)
+
+
+## Table of contents
+* [Usage](#usage)
+* [Overview](#overview)
+* [Installation](#installation)
+* [Future Updates](#future-updates)
+
+# Usage
 
 1. Using Epson's SmartScan Suite that comes with Epson scanners, open the PDFNavi application:
 
@@ -16,7 +27,12 @@ For use with Epson v600, or any Epson scanners compatible with Epson SmartScan S
 
 ![](multipagepdf.png)
 
-4. Open this app, select the PDF and the export location, and click Autocrop! 
+4. Open Terminal and cd into project directory and run:
+
+```
+make run
+```
+Select the PDF and the export location, and click Autocrop.
 
 ![](gui.png)
 
@@ -24,7 +40,7 @@ For use with Epson v600, or any Epson scanners compatible with Epson SmartScan S
 
 ![](fileoutput.png)
 
-# Intro 
+# Overview 
 
 If you can fit 4 photos on a scanner bed at once, you should be able to press Scan and receive 4 separate images in return.
 
@@ -44,15 +60,17 @@ Comparison for scanning 3 photos at once (and getting 3 separate files as output
 
 <!-- https://www.reddit.com/r/DataHoarder/comments/ar0gts/helpful_reminder_scanners_dont_actually_scan_the/ -->
 
-# Goal
+<!-- # Goal
 
 This project’s goal is to make scanning as simple as placing 4 photos on the scanner bed (or as many as you can fit so long as they are separated by enough white space), pressing the scan button, then waiting a couple seconds (depending on scan quality settings).
 
 Behind the scenes, basic OCR identifies the white space separating each individual photo, and exports each as a separate cropped image.
 
-Then swap the photos out, place new ones in, and repeat.
+Then swap the photos out, place new ones in, and repeat. -->
 
 # Installation
+
+Navigate to the project's root directory via command prompt or Terminal.
 
 First install the required openCV modules.
 
@@ -68,7 +86,7 @@ pip install -r requirements.txt
 
 This will take a minute or two as large computer vision modules are required.
 
-# Usage
+<!-- # Usage
 
 Use PDFNavi to scan photo batch to a consolidated PDF, where each page of the PDF is a scan (and each page has multiple photos separated by whitepsace).
 
@@ -81,7 +99,7 @@ make run
 ```
 
 Choose the consolidated PDF file, and the output location. Then click Autocrop:
-![](gui.png)
+![](gui.png) -->
 
 
 # Future Updates
