@@ -1,5 +1,7 @@
 # Batch PDF Autocropper + EXIF Encoder
 
+to-do: compress into downloadable app
+
 This is a Python application with a GUI that takes in a multi-page PDF of individual scans with 3-4 individual photos on each page (separated by scanner bed whitespace), and uses [OpenCV](https://pypi.org/project/opencv-python/) to output cropped images.
 
 It also has an optional EXIF encoder!
