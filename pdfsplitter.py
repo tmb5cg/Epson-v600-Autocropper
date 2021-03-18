@@ -11,7 +11,7 @@ from pdf2image.exceptions import (
 import imgdetect
 
 
-def split_pdf(input_filepath, output_filepath):
+def split_pdf(input_filepath, output_filepath, month, year):
 
     original_output_filepath = output_filepath + "/"
     arr = input_filepath.split("/")
@@ -21,16 +21,6 @@ def split_pdf(input_filepath, output_filepath):
 
     # remove .pdf
     individual_filename = individual_filename[:-4] 
-
-
-    # pdf_filename = "1.17.94.pdf"
-
-
-    # dir_path = os.path.dirname(os.path.realpath(__file__))
-
-
-    # input_filepath = dir_path + "/" + pdf_filename
-    # output_filepath = dir_path + "/" + pdf_filename[:-4] + "_split"
 
     pdf_outputfolder = output_filepath + "/pdfs"
     images_outputfolder = output_filepath + "/uncropped_images"
@@ -44,6 +34,7 @@ def split_pdf(input_filepath, output_filepath):
 
     numpgs = inputpdf.numPages
 
+    # Iterate over pages in PDF, call img detection function
     for i in range(inputpdf.numPages):
         output = PdfFileWriter()
         output.addPage(inputpdf.getPage(i))
@@ -64,6 +55,7 @@ def split_pdf(input_filepath, output_filepath):
         print(converted_filename)
 
         # Crop image
-        imgdetect.doWork(converted_filename, original_output_filepath)
+        num_photos_found = imgdetect.doWork(converted_filename, original_output_filepath, month, year)
+        print("Finished page " + str(i+1) + " - output " + str(num_photos_found) + " separate images")
     
 

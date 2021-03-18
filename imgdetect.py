@@ -4,11 +4,14 @@ from skimage.filters import threshold_local
 import numpy as np
 import argparse
 import imutils
-
+from datetime import datetime
+import piexif
 import random as r
+from PIL import Image
+
 
 # Autocrops individual page using openCV
-def doWork(filename, outputfolder):
+def doWork(filename, outputfolder, month, year):
     image1 = cv2.imread(filename)
     h, w = image1.shape[0:2]
 
@@ -57,15 +60,58 @@ def doWork(filename, outputfolder):
 
         # Get individual file name
         imgname_i = str(imgname) + '_' + str(i)
-        new_file_name = 'cropped{}.png'.format(imgname_i)
+        new_file_name = 'cropped{}.jpg'.format(imgname_i)
 
         # File name + directory
         new_file_name_path = path + new_file_name
-        print(new_file_name_path)
+        # print(new_file_name_path)
 
         cv2.imwrite(new_file_name_path, image[y:y + h, x:x + w])
+
+        # Encode exif month
+        if ((month != "none") and (year != "none")):
+            OPTIONSMONTH = [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sept",
+            "Oct",
+            "Nov",
+            "Dec"
+            ]
+
+            month_number = 0
+            count = 1
+            for x in OPTIONSMONTH:
+                if (x == month):
+                    month_number = count
+                count+=1
+
+            print("Encoded photo " + str(i+1) + " " + str(month) + " " + str(year))
+
+            # Convert to int
+            month_number = month_number
+            year_number = int(year)
+
+            exif_dict = piexif.load(new_file_name_path)
+            new_date = datetime(year_number, month_number, 1, 0, 0, 0).strftime("%Y:%m:%d %H:%M:%S")
+            exif_dict['0th'][piexif.ImageIFD.DateTime] = new_date
+            exif_dict['Exif'][piexif.ExifIFD.DateTimeOriginal] = new_date
+            exif_dict['Exif'][piexif.ExifIFD.DateTimeDigitized] = new_date
+            exif_bytes = piexif.dump(exif_dict)
+            piexif.insert(exif_bytes, new_file_name_path)
+        else:
+            print("No exif data input")
         i+=1
 
+    num_photos_exported = i
+    return num_photos_exported
 
+    print("Finished page")
     #cv2.imshow("Image2", image2)
     #cv2.waitKey(0)

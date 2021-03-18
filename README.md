@@ -1,12 +1,15 @@
-# Batch Scan Autocropper
+# Batch PDF Autocropper + EXIF Encoder
 
-This is a Python application with a Tkinter GUI that takes in a multi-page PDF of individual scans with 3-4 individual photos on each page (separated by scanner bed whitespace), and uses [OpenCV](https://pypi.org/project/opencv-python/) to detect and export the individual photos in the entire PDF.
+This is a Python application with a GUI that takes in a multi-page PDF of individual scans with 3-4 individual photos on each page (separated by scanner bed whitespace), and uses [OpenCV](https://pypi.org/project/opencv-python/) to output cropped images.
+
+It also has an optional EXIF encoder!
 
 I created this because the automatic cropping in Apple's [ImageCapture](https://support.apple.com/guide/image-capture/scan-images-imgcp1004/mac) and [Epson's ScanSmart](https://epson.com/Support/wa00870) software requires a preview scan (~8 seconds), approval of the detected edges (~5 seconds let's say), followed by 3 separate scans for each individual photo (~120 seconds for just 3 photos!).
 
-Using this application paired with Epson's PDFNavi, the same result (3 individual photos) can be achieved in less than 15 seconds. This makes the monotonous task of scanning hundreds or thousands of old photos significantly faster, easier, and for better or worse, more monotonous.
+Using this application paired with Epson's PDFNavi, the same result (3 individual photos) can be achieved in less than 15 seconds.
 
-![](readme/gui.png)
+![](readme/guiv2.png)
+![](readme/demo.gif)
 
 Input PDF of scans            |  Output cropped images
 :-------------------------:|:-------------------------:
@@ -21,6 +24,7 @@ Input PDF of scans            |  Output cropped images
 
 # Usage
 
+explain why pdfNavi is used
 1. Using Epson's SmartScan Suite that comes with Epson scanners, open the PDFNavi application:
 
     ![](readme/PDFnavi.png)
@@ -38,7 +42,7 @@ Input PDF of scans            |  Output cropped images
     ```
 5. Select the PDF and the export location, and click Autocrop.
 
-    ![](readme/gui.png)
+    ![](readme/guiv2.png)
 
 5. Output:
 
