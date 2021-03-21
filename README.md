@@ -10,7 +10,6 @@ I created this because the automatic cropping in Apple's [ImageCapture](https://
 
 Using this application paired with Epson's PDFNavi, the same result (3 individual photos) can be achieved in less than 15 seconds.
 
-![](readme/guiv2.png)
 ![](readme/demo.gif)
 
 Input PDF of scans            |  Output cropped images
